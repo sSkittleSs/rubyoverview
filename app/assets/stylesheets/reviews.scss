@@ -1,3 +1,38 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "bootstrap/scss/_functions.scss";
+@import "bootstrap/scss/_variables.scss";
+@import "bootstrap/scss/mixins/_breakpoints.scss";
+
+.card-columns {
+  display: none;
+
+  @include media-breakpoint-up(sm) {
+    display: block;
+    column-count: 2;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+    column-count: 3;
+  }
+
+  // X-Large devices (large desktops, 1300px and up)
+  @media (min-width: 1300px) {
+    display: block;
+    column-count: 4;
+  }
+
+  // XX-Large devices (larger desktops, 1500px and up)
+  @media (min-width: 1550px) {
+    display: block;
+    column-count: 5;
+  }
+}
+
+.card {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}

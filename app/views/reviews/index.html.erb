@@ -1,6 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reviews</h1>
+<h1><%= t('reviews.title') %></h1>
+
+<div class="card-columns">
+  <% @reviews.each do |review| %>
+      <div class="card" style="width: 18rem; margin: 0rem 0rem 5rem 0rem">
+        <div class="card-header"><%= review.group %></div>
+        <img src="..." class="card-img-top" alt="Review image">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= review.name %></h5>
+          <p class="card-text"><%= review.content %></p>
+          
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Show', review, class: 'btn btn-primary'%>
+          <div class="float-end">
+            <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-warning w-10'%>
+            <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger w-20'%>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<br><br><hr><br><br>
 
 <table>
   <thead>
@@ -28,4 +51,4 @@
 
 <br>
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'New Review', new_review_path, class: 'btn btn-success'%>
