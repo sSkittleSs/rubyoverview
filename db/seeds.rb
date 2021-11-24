@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+100.times do |index|
+  Review.create!(
+    name: "Обзор на кино ##{index}",
+    group: "Кино",
+    content: "Текст обзора ##{index}"
+  )
+end
+
+100.times do |index|
+  Review.create!(
+    name: "Обзор на книгу ##{index}",
+    group: "Книга",
+    content: "Текст обзора ##{index}"
+  )
+end

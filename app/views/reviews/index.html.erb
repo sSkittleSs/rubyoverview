@@ -9,7 +9,8 @@
         <img src="..." class="card-img-top" alt="Review image">
         <div class="card-body">
           <h5 class="card-title text-center"><%= review.name %></h5>
-          <p class="card-text"><%= review.content %></p>
+          <hr>
+          <p class="card-text"><%= review.content[...100] %> ...</p>
           
         </div>
         <div class="card-footer">
@@ -23,33 +24,13 @@
       </div>
   <% end %>
 </div>
-
-<br><br><hr><br><br>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Group</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.name %></td>
-        <td><%= review.group %></td>
-        <td><%= review.content %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @reviews %>
+  </div>
+  <%= will_paginate @reviews, :container => false %>
+</div>
+<br><br><hr><br><br>
 
 <%= link_to 'New Review', new_review_path, class: 'btn btn-success'%>
