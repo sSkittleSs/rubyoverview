@@ -42,8 +42,14 @@
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success me-5" type="submit">Search</button>
           </form>
+          <% if user_signed_in? %>
+              <div class="fs-5 me-1"><%= current_user.email %></div>
+              <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn btn-danger w-20' %>
+          <% else %>
+              <%= link_to 'Войти', new_user_session_path, class: 'btn btn-success w-5 me-1' %> <div class="fs-6 me-1">или</div> <%= link_to 'Зарегистрироваться', new_user_registration_path, class: 'btn btn-secondary w-5' %>
+          <% end %>
         </div>
       </div>
     </nav>
