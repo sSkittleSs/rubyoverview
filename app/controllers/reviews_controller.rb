@@ -1,10 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, :only => [:show, :index]
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.page(params[:page] || 1)
+    @reviews = Review.order("id ASC").reverse_order.page(params[:page] || 1)
   end
 
   # GET /reviews/1 or /reviews/1.json
@@ -57,14 +56,21 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def add_user_rating
+    Review.find(params[:id])&.ratings.push(Rating.new(user_rating: params[:rating], user: current_user))
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:name, :group, :content)
+      params.require(:review).permit(:name, :group, :content, :description, :author_rating, :user_id)
     end
 end

@@ -10,7 +10,10 @@
   Review.create!(
     name: "Обзор на кино ##{index}",
     group: "Кино",
-    content: "Текст обзора ##{index}"
+    description: "Описание обзора на кино ##{index}",
+    author_rating: rand(10).round(1),
+    content: "Текст обзора ##{index}",
+    user_id: User.first&.id
   )
 end
 
@@ -18,6 +21,9 @@ end
   Review.create!(
     name: "Обзор на книгу ##{index}",
     group: "Книга",
-    content: "Текст обзора ##{index}"
+    description: "Описание обзора на книгу ##{index}",
+    author_rating: rand(3.0..10.0).round(2),
+    content: "Текст обзора ##{index}",
+    user_id: User.first&.id
   )
 end

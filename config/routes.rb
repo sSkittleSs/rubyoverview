@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /en|ru|by/ do
     devise_for :users
-    resources :reviews
+    resources :users
+    resources :reviews do
+      member do
+        post '/add_user_rating/:rating(.:format)', to: 'reviews#add_user_rating', as: :add_user_rating
+      end
+    end
     
-    get 'persons/profile', as: 'user_root'
-
-    root to: 'reviews#index'
+    root to: 'home#index'
   end
 end

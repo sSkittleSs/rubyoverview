@@ -1,1 +1,51 @@
 @import "bootstrap/scss/bootstrap";
+
+.card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating a {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating a::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0.1
+}
+
+.rating a:hover:before,
+.rating a:hover~a:before {
+    opacity: 1 !important
+}
+
+.rating input:checked~a:before {
+    opacity: 1
+}
+
+.rating:hover input:checked~a:before {
+    opacity: 0.5
+}
+
+.rating label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    color: #FFD600;
+    opacity: 0.25;
+}
+
+.rating label.filled {
+    opacity: 1;
+}

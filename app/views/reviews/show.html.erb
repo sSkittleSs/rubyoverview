@@ -11,6 +11,21 @@
 </p>
 
 <p>
+  <strong>Dscription:</strong>
+  <%= @review.description %>
+</p>
+
+<p>
+  <strong>Author rating:</strong>
+  <%= @review.author_rating %>
+</p>
+
+<p>
+  <strong>User rating:</strong>
+  <%= average_users_rating @review %>
+</p>
+
+<p>
   <strong>Content:</strong>
   <%= @review.content %>
 </p>
