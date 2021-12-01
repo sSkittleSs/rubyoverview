@@ -22,7 +22,7 @@
 
 <p>
   <strong>User rating:</strong>
-  <%= average_users_rating @review %>
+  <%= @review.average_users_rating %>
 </p>
 
 <p>
@@ -30,5 +30,7 @@
   <%= @review.content %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
+<% if @review.user == current_user %>
+  <%= link_to 'Edit', edit_review_path(@review) %> |
+<% end %>
 <%= link_to 'Back', reviews_path %>

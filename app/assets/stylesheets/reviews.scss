@@ -9,12 +9,17 @@
 .card-columns {
   display: none;
 
-  @include media-breakpoint-up(sm) {
+  @media (min-width: 330px) {
+    display: block;
+    column-count: 1;
+  }
+
+  @media (min-width: 650px) {
     display: block;
     column-count: 2;
   }
 
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 940px) {
     display: block;
     column-count: 3;
   }

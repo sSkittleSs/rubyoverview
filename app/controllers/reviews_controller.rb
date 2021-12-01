@@ -58,15 +58,15 @@ class ReviewsController < ApplicationController
 
   def add_user_rating
     Review.find(params[:id])&.ratings.push(Rating.new(user_rating: params[:rating], user: current_user))
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
-      respond_to do |format|
-        format.html { redirect_to request.referrer }
-      end
     end
 
     # Only allow a list of trusted parameters through.

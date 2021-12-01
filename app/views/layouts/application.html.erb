@@ -25,27 +25,16 @@
             <li class="nav-item">
               <%= link_to 'Reviews', reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
             </li>
-            <%# <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li> %>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success me-5" type="submit">Search</button>
           </form>
           <% if user_signed_in? %>
-              <div class="fs-5 me-1"><%= current_user.email %></div>
-              <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger w-20' %>
+            <%= link_to current_user.email, current_user, class: 'fs-5 me-1 text-dark text-decoration-none'%>
+            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger w-20' %>
           <% else %>
-              <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-success w-5 me-1' %> <div class="fs-6 me-1">or</div> <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-secondary w-5' %>
+            <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-success w-5 me-1' %> <div class="fs-6 me-1">or</div> <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-secondary w-5' %>
           <% end %>
         </div>
       </div>

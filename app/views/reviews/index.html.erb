@@ -9,7 +9,7 @@
           <div class="col text-start"><%= review.group %></div>
           <div class="col text-end"><%= review.author_rating %> | <%= review.average_users_rating %></div>
         </div>
-        <img src="..." class="card-img-top" alt="Review image">
+        <%# <img src="..." class="card-img-top" alt="Review image"> %>
         <div class="card-body">
           <h5 class="card-title text-center"><%= review.name %></h5>
           <hr>
@@ -18,10 +18,12 @@
         </div>
         <div class="card-footer">
           <%= link_to 'Show', review, class: 'btn btn-primary'%>
-          <div class="float-end">
-            <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-warning w-10'%>
-            <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger w-20'%>
-          </div>
+          <% if review.user == current_user %>
+            <div class="float-end">
+              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning w-10'%>
+              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger w-20'%>
+            </div>
+          <% end %>
           <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
           <%= form_with(model: review) do |form| %>
             <div class="rating">
