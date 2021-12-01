@@ -1,6 +1,6 @@
 module ReviewsHelper
   def description_formatted(review)
-    review.description[...80]
+    review.description[...50]
   end
 
   def appreciated?(review)

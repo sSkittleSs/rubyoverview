@@ -26,8 +26,8 @@
               <%= link_to 'Reviews', reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" action="<%= search_path %>" method="<%= :get %>">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="<%= :term %>" id="<%= :term %>" value="<%= params[:term] %>">
             <button class="btn btn-outline-success me-5" type="submit">Search</button>
           </form>
           <% if user_signed_in? %>
