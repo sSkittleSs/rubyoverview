@@ -17,11 +17,11 @@
           
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', review, class: 'btn btn-primary'%>
+          <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
           <% if review.user == current_user %>
             <div class="float-end">
-              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning w-10'%>
-              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger w-20'%>
+              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%>
             </div>
           <% end %>
           <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>

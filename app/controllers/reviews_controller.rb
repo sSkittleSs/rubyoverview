@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.order("id ASC").reverse_order.page(params[:page] || 1)
+    @reviews = Review.order("id DESC").page(params[:page] || 1)
   end
 
   # GET /reviews/1 or /reviews/1.json
