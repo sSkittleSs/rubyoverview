@@ -1,9 +1,9 @@
-<h1 class="text-center">Home page</h1>
-<h5>Last 5 reviews</h5>
+<h1 class="text-center"><%= t('home.index.title') %></h1>
+<h5><%= t('home.index.last_reviews') %></h5>
 <hr><br>
 <div class="card-columns">
   <% @last_reviews.each do |review| %>
-      <div class="card mb-5" style="width: 18rem;">
+      <div class="card mb-5">
         <div class="row g-0 card-header">
           <div class="col text-start"><%= review.group %></div>
           <div class="col text-end"><%= review.author_rating %> | <%= review.average_users_rating %></div>
@@ -15,14 +15,14 @@
           
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
+          <%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%>
           <% if review.user == current_user %>
             <div class="float-end">
-              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
-              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%>
+              <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+              <%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%>
             </div>
           <% end %>
-          <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
+          <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
           <%= form_with(model: review) do |form| %>
             <div class="rating">
               <% (1..5).sort_by{|n| -n}.each do |rating| %>
@@ -39,11 +39,11 @@
   <% end %>
 </div>
 <hr><br>
-<h5>Top 5 from creators</h5>
+<h5><%= t('home.index.top_reviews_creators') %></h5>
 <hr><br>
 <div class="card-columns">
   <% @authors_top_reviews.each do |review| %>
-      <div class="card mb-5" style="width: 18rem;">
+      <div class="card mb-5">
         <div class="row g-0 card-header">
           <div class="col text-start"><%= review.group %></div>
           <div class="col text-end"><%= review.author_rating %> | <%= review.average_users_rating %></div>
@@ -55,14 +55,14 @@
           
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
+          <%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%>
           <% if review.user == current_user %>
             <div class="float-end">
-              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
-              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%>
+              <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+              <%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%>
             </div>
           <% end %>
-          <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
+          <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
           <%= form_with(model: review) do |form| %>
             <div class="rating">
               <% (1..5).sort_by{|n| -n}.each do |rating| %>
@@ -79,11 +79,11 @@
   <% end %>
 </div>
 <hr><br>
-<h5>Top 5 popular reviews</h5>
+<h5><%= t('home.index.top_reviews_users') %></h5>
 <hr><br>
 <div class="card-columns">
   <% @users_top_reviews.each do |review| %>
-      <div class="card mb-5" style="width: 18rem;">
+      <div class="card mb-5">
         <div class="row g-0 card-header">
           <div class="col text-start"><%= review.group %></div>
           <div class="col text-end"><%= review.author_rating %> | <%= review.average_users_rating %></div>
@@ -95,14 +95,14 @@
           
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
+          <%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%>
           <% if review.user == current_user %>
             <div class="float-end">
-              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
-              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%>
+              <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+              <%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%>
             </div>
           <% end %>
-          <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
+          <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
           <%= form_with(model: review) do |form| %>
             <div class="rating">
               <% (1..5).sort_by{|n| -n}.each do |rating| %>

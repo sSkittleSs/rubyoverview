@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= t('reviews.title') %></h1>
-
-<div class="card-columns">
+<h1 class="text-center"><%= t('reviews.title') %></h1>
+<hr><br>
+<div class="card-columns mx-auto">
   <% @reviews.each do |review| %>
-      <div class="card mb-5" style="width: 18rem;">
+      <div class="card mb-5">
         <div class="row g-0 card-header">
           <div class="col text-start"><%= review.group %></div>
           <div class="col text-end"><%= review.author_rating %> | <%= review.average_users_rating %></div>
@@ -17,14 +15,14 @@
           
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
+          <%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%>
           <% if review.user == current_user %>
             <div class="float-end">
-              <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
-              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%>
+              <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+              <%= link_to t('card.destroy'), review, method: :delete, data: t('card.confirm'), class: 'btn btn-outline-danger btn-sm'%>
             </div>
           <% end %>
-          <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
+          <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
           <%= form_with(model: review) do |form| %>
             <div class="rating">
               <% (1..5).sort_by{|n| -n}.each do |rating| %>
@@ -49,4 +47,4 @@
 </div>
 <br><br><hr><br><br>
 
-<%= link_to 'New Review', new_review_path, class: 'btn btn-success'%>
+<%= link_to t('reviews.new_review'), new_review_path, class: 'btn btn-success'%>

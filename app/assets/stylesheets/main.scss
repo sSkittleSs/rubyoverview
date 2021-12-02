@@ -1,5 +1,14 @@
 @import "bootstrap/scss/bootstrap";
 
+body {
+    background-color: #eee;
+}
+
+.main-container {
+    padding: 20px;
+    background-color: #fff;
+}
+
 .card {
     page-break-inside: avoid;
     break-inside: avoid;
@@ -48,4 +57,8 @@
 
 .rating label.filled {
     opacity: 1;
+}
+
+.card {
+    width: 19rem;
 }

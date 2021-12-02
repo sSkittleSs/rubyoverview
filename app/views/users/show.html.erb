@@ -1,39 +1,47 @@
-<div class="card mb-5 mx-auto" style="width: 18rem;">
+<div class="card mb-5 mx-auto mt-5" style="width: 18rem;">
   <div class="row g-0 card-header">
-    <div class="col text-start"><%= link_to 'Back', request.referrer || root_path, class: 'btn btn-outline-secondary btn-sm' %></div>
-    <div class="col text-center fw-bold fs-5">User profile</div>
+    <div class="col text-start"><%= link_to t('card.back'), request.referrer || root_path, class: 'btn btn-outline-secondary btn-sm' %></div>
+    <div class="col text-center fw-bold fs-5"><%= t('users.show.title') %></div>
     <div class="col text-end"></div>
   </div>
   <div class="card-body">
     <h5 class="card-title text-center"><%= @user.username %></h5>
     <hr>
     <div class="row g-0">
-      <div class="col text-start">User id</div>
+      <div class="col text-start"><%= t('users.show.user.id') %></div>
       <div class="col text-end"><%= @user.id %></div>
     </div>
     <div class="row g-0">
-      <div class="col text-start">Email</div>
+      <div class="col text-start"><%= t('users.show.user.email') %></div>
       <div class="col text-end"><%= @user.email %></div>
+    </div>
+    <div class="row g-0">
+      <div class="col text-start"><%= t('users.show.user.reviews') %></div>
+      <div class="col text-end"><%= @user.reviews&.size || 0 %></div>
+    </div>
+    <div class="row g-0">
+      <div class="col text-start"><%= t('users.show.user.ratings') %></div>
+      <div class="col text-end"><%= @user.ratings&.size || 0 %></div>
     </div>
   </div>
   <div class="card-footer">
     <% if @user == current_user %>
-      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-outline-warning btn-sm'%>
-      <div class="float-end"><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%></div>
+      <%= link_to t('card.edit'), edit_user_registration_path, class: 'btn btn-outline-warning btn-sm'%>
+      <div class="float-end"><%= link_to t('card.destroy'), @user, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></div>
     <% end %>
-    <p class="card-text"><small class="text-muted">Last update at <%= distance_of_time_in_words_to_now(@user.updated_at) %></small></p>
+    <p class="card-text"><small class="text-muted"><%= t('card.back') %> <%= distance_of_time_in_words_to_now(@user.updated_at) %></small></p>
   </div>
 </div>
-<h5 class="text-center">User's reiviews</h5>
+<h5 class="text-center"><%= t('users.show.reviews') %></h5>
 <hr><br>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th class="text-center">Author's rating</th>
-      <th class="text-center">Users rating</th>
+      <th><%= t('users.show.table.id') %></th>
+      <th><%= t('users.show.table.title') %></th>
+      <th><%= t('users.show.table.description') %></th>
+      <th class="text-center"><%= t('users.show.table.author_rating') %></th>
+      <th class="text-center"><%= t('users.show.table.users_rating') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -46,10 +54,10 @@
         <td class="align-middle"><%= description_formatted review %> ...</td>
         <td class="align-middle text-center fw-bold"><%= review.author_rating %></td>
         <td class="align-middle text-center fw-bold"><%= review.average_users_rating %></td>
-        <td><%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%></td>
+        <td><%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%></td>
         <% if current_user == @user %>
-          <td><%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%></td>
-          <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%></td>
+          <td><%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%></td>
+          <td><%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></td>
         <% end %>
       </tr>
     <% end %>

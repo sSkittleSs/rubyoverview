@@ -1,13 +1,13 @@
-<h5 class="text-center">Users</h5>
+<h5 class="text-center"><%= t('users.index.title') %></h5>
 <hr><br>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th class="text-center">Reviews</th>
-      <th class="text-center">Ratings</th>
+      <th><%= t('users.index.table.id') %></th>
+      <th><%= t('users.index.table.username') %></th>
+      <th><%= t('users.index.table.email') %></th>
+      <th class="text-center"><%= t('users.index.table.reviews') %></th>
+      <th class="text-center"><%= t('users.index.table.ratings') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
         <td class="align-middle"><%= user.email %> ...</td>
         <td class="align-middle text-center fw-bold"><%= user.reviews&.size || 0 %></td>
         <td class="align-middle text-center fw-bold"><%= user.ratings&.size || 0%></td>
-        <td><%= link_to 'Show', user, class: 'btn btn-primary btn-sm'%></td>
-        <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-outline-warning btn-sm'%></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%></td>
+        <td><%= link_to t('card.show'), user, class: 'btn btn-primary btn-sm'%></td>
+        <td><%= link_to t('card.edit'), edit_user_registration_path, class: 'btn btn-outline-warning btn-sm'%></td>
+        <td><%= link_to t('card.destroy'), user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%></td>
       </tr>
     <% end %>
   </tbody>

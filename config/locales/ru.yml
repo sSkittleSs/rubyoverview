@@ -1,3 +1,56 @@
 ru:
+  navbar:
+    nav_item:
+      home: "Главная"
+      reviews:  "Обзоры"
+    search_form:
+      text_field: "Поиск"
+      search_button: "Поиск"
+    auth:
+      sign_out: "Выйти"
+      sign_in: "Войти"
+      sign_up: "Регистрация"
+      or: "или"
+  home:
+    index:
+      title: "Главная страница"
+      last_reviews: "Последние обзоры"
+      top_reviews_creators: "Топ по оценкам авторов"
+      top_reviews_users: "Топ обзоров"
   reviews:
     title: "Обзоры"
+    new_review: "Новый обзор"
+  card:
+    confirm: "Вы уверены?"
+    back: "Назад"
+    show: "Показать"
+    edit: "Редактировать"
+    destroy: "Удалить"
+    update_at: "Последнее обновление"
+  search:
+    search_result: "Результат запроса"
+    no_matches: "По вашему запросу не найдено совпадений."
+  users:
+    index:
+      title: "Пользователи"
+      table:
+        id: "#"
+        username: "Имя пользователя"
+        email: "Почта"
+        reviews: "Обзоры"
+        ratings: "Оценки"
+    show:
+      title: "Профиль пользователя"
+      reviews: "Обзоры пользователя"
+      user:
+        id: "Id пользователя"
+        email: "Почта"
+        reviews: "Обзоры"
+        ratings: "Оценки"
+      table:
+        id: "#"
+        title: "Название"
+        description: "Описание"
+        author_rating: "Оценка автора"
+        users_rating: "Оценка пользователей"
+    

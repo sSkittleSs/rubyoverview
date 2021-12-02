@@ -1,3 +1,56 @@
 en:
+  navbar:
+    nav_item:
+      home: "Home"
+      reviews:  "Reviews"
+    search_form:
+      text_field: "Search"
+      search_button: "Search"
+    auth:
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      or: "or"
+  home:
+    index:
+      title: "Home page"
+      last_reviews: "Last reviews"
+      top_reviews_creators: "Top from creators"
+      top_reviews_users: "Top from users"
   reviews:
     title: "Reviews"
+    new_review: "New review"
+  card:
+    confirm: "Are you sure?"
+    back: "Back"
+    show: "Show"
+    edit: "Edit"
+    destroy: "Destroy"
+    update_at: "Last update at"
+  search:
+    search_result: "Search results"
+    no_matches: "Your search did not match any reviews."
+  users:
+    index:
+      title: "Users"
+      table:
+        id: "#"
+        username: "Username"
+        email: "Email"
+        reviews: "Reviews"
+        ratings: "Ratings"
+    show:
+      title: "User profile"
+      reviews: "User reviews"
+      user:
+        id: "User id"
+        email: "Email"
+        reviews: "Reviews"
+        ratings: "Ratings"
+      table:
+        id: "#"
+        title: "Title"
+        description: "Description"
+        author_rating: "Author's rating"
+        users_rating: "Users rating"
+    

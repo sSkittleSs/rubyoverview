@@ -20,27 +20,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <%= link_to 'Home', root_path, class: "nav-link" + (current_page?(root_path) ? " active" : "") %>
+              <%= link_to t('navbar.nav_item.home'), root_path, class: "nav-link" + (current_page?(root_path) ? " active" : "") %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Reviews', reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
+              <%= link_to t('navbar.nav_item.reviews'), reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
             </li>
           </ul>
           <form class="d-flex" action="<%= search_path %>" method="<%= :get %>">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="<%= :term %>" id="<%= :term %>" value="<%= params[:term] %>">
-            <button class="btn btn-outline-success me-5" type="submit">Search</button>
+            <input class="form-control me-2" type="search" placeholder="<%= t('navbar.search_form.text_field') %>" aria-label="Search" name="<%= :term %>" id="<%= :term %>" value="<%= params[:term] %>">
+            <button class="btn btn-outline-success me-5" type="submit"><%= t('navbar.search_form.search_button') %></button>
           </form>
           <% if user_signed_in? %>
             <%= link_to current_user.email, current_user, class: 'fs-5 me-1 text-dark text-decoration-none'%>
-            <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger w-20' %>
+            <%= link_to t('navbar.auth.sign_out'), destroy_user_session_path, :method => :delete, class: 'btn btn-danger w-20' %>
           <% else %>
-            <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-success w-5 me-1' %> <div class="fs-6 me-1">or</div> <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-secondary w-5' %>
+            <%= link_to t('navbar.auth.sign_in'), new_user_session_path, class: 'btn btn-success w-5 me-1' %> <div class="fs-6 me-1"><%= t('navbar.auth.or') %></div> <%= link_to t('navbar.auth.sign_up'), new_user_registration_path, class: 'btn btn-secondary w-5' %>
           <% end %>
         </div>
       </div>
     </nav>
 
-    <div class="pt-4">
+    <div class="main-container">
       <%= yield %>
     </div>
   </body>
