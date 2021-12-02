@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[ edit index destroy ]
-  before_action :set_user, only: %i[ show destroy ]
-  before_action :require_admin_permissions!, only: %i[ index ]
+  before_action :set_user, only: %i[ show destroy make_admin ]
+  before_action :require_admin_permissions!, only: %i[ index make_admin ]
   before_action :require_creator_permissions!, only: %i[ destroy ]
 
   # GET /users or /users.json
@@ -30,6 +30,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def make_admin
+    @user.roles.push Role.admin
+    respond_to do |format|
+      format.html { redirect_to request&.referrer || root_path }
     end
   end
 

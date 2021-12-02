@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ add_user_rating new create edit update destroy ]
   before_action :set_review, only: %i[ show edit update destroy ]
   before_action :require_creator_permissions!, only: %i[ destroy update edit ]
 
@@ -51,14 +51,10 @@ class ReviewsController < ApplicationController
 
   # DELETE /reviews/1 or /reviews/1.json
   def destroy
-    if !@user.current? # TODO: add condition if user is admin
-      redirect_to request&.referrer || root_path
-    else
-      @review.destroy
-      respond_to do |format|
-        format.html { redirect_to request&.referrer || root_path }
-        format.json { head :no_content }
-      end
+    @review.destroy
+    respond_to do |format|
+      format.html { redirect_to request&.referrer || root_path }
+      format.json { head :no_content }
     end
   end
 

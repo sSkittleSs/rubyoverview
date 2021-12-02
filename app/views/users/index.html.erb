@@ -1,4 +1,4 @@
-<h5 class="text-center"><%= t('users.index.title') %></h5>
+<h1 class="text-center"><%= t('users.index.title') %></h1>
 <hr><br>
 <table class="table table-striped table-hover">
   <thead>
@@ -6,9 +6,10 @@
       <th><%= t('users.index.table.id') %></th>
       <th><%= t('users.index.table.username') %></th>
       <th><%= t('users.index.table.email') %></th>
+      <th class="text-end"><%= t('users.index.table.roles') %></th>
       <th class="text-center"><%= t('users.index.table.reviews') %></th>
       <th class="text-center"><%= t('users.index.table.ratings') %></th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -17,11 +18,23 @@
       <tr>
         <td class="align-middle"><%= user.id %></td>
         <td class="align-middle"><%= user.username %></td>
-        <td class="align-middle"><%= user.email %> ...</td>
+        <td class="align-middle"><%= user.email %></td>
+        <td class="align-middle text-end fw-bold">
+          <% if user.roles.size > 0 %>
+            <%= user.roles.inject('') { |result, role| result + ' ' + role.name }%>
+          <% else %>
+            <%= t('users.show.user.none_roles') %>
+          <% end %>
+        </td>
         <td class="align-middle text-center fw-bold"><%= user.reviews&.size || 0 %></td>
         <td class="align-middle text-center fw-bold"><%= user.ratings&.size || 0%></td>
         <td><%= link_to t('card.show'), user, class: 'btn btn-primary btn-sm'%></td>
-        <td><%= link_to t('card.destroy'), user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'%></td>
+        <td>
+          <% if !user.admin? %>
+            <%= link_to t('card.make_admin'), make_admin_user_path(user), method: :make_admin, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-secondary btn-sm'%>
+          <% end %>
+        </td>
+        <td><%= link_to t('card.destroy'), user, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></td>
       </tr>
     <% end %>
   </tbody>

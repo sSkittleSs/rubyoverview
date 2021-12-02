@@ -23,16 +23,18 @@
             </div>
           <% end %>
           <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %></small></p>
-          <%= form_with(model: review) do |form| %>
-            <div class="rating">
-              <% (1..5).sort_by{|n| -n}.each do |rating| %>
-                <% if (appreciated?(review)) %>
-                  <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
-                <% else %>
-                  <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
+          <% if user_signed_in? %>
+            <%= form_with(model: review) do |form| %>
+              <div class="rating">
+                <% (1..5).sort_by{|n| -n}.each do |rating| %>
+                  <% if (appreciated?(review)) %>
+                    <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
+                  <% else %>
+                    <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

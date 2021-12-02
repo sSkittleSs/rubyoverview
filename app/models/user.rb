@@ -15,6 +15,6 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
 
   def admin?
-    roles&.include?(Role.all.find_by name: 'admin')
+    roles&.include? Role.admin
   end
 end

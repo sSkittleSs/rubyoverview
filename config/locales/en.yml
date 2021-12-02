@@ -28,6 +28,7 @@ en:
     edit: "Edit"
     destroy: "Destroy"
     update_at: "Last update at"
+    make_admin: "Make admin"
   search:
     search_result: "Search results"
     no_matches: "Your search did not match any reviews."
@@ -41,7 +42,7 @@ en:
         reviews: "Reviews"
         ratings: "Ratings"
         roles: "Roles"
-        none_roles: "None" 
+        none_roles: "None"
     show:
       title: "User profile"
       reviews: "User reviews"
@@ -50,6 +51,8 @@ en:
         email: "Email"
         reviews: "Reviews"
         ratings: "Ratings"
+        roles: "Roles"
+        none_roles: "None"
       table:
         id: "#"
         title: "Title"
