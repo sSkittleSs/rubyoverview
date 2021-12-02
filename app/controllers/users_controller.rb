@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[ index destroy ]
+  before_action :authenticate_user!, only: %i[ edit index destroy ]
   before_action :set_user, only: %i[ show destroy ]
+  before_action :require_admin_permissions!, only: %i[ index ]
+  before_action :require_creator_permissions!, only: %i[ destroy ]
 
   # GET /users or /users.json
   def index
-    # TODO: if user is not admin -> redirect to back page or root page
     @users = User.all.order("id DESC").page(params[:page] || 1)
   end
   
@@ -25,14 +26,10 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    if @user != current_user # TODO: add condition if user is admin
-      redirect_to request&.referrer || root_path
-    else
-      @user.destroy
-      respond_to do |format|
-        format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
-        format.json { head :no_content }
-      end
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 

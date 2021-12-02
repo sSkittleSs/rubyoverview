@@ -6,6 +6,18 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  def require_creator_permissions!
+    redirect_to request&.referrer || root_path if !helpers.creator_permissions? current_user
+  end
+  
+  def require_admin_permissions!
+    redirect_to request&.referrer || root_path if !current_user.admin?
+  end
+
+  def creator_permissions?(user)
+    helpers.creator_permissions? user
+  end
+
   private
 
   def switch_locale(&block)

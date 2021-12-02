@@ -3,6 +3,7 @@ ru:
     nav_item:
       home: "Главная"
       reviews:  "Обзоры"
+      users: "Пользователи"
     search_form:
       text_field: "Поиск"
       search_button: "Поиск"
@@ -47,6 +48,8 @@ ru:
         email: "Почта"
         reviews: "Обзоры"
         ratings: "Оценки"
+        roles: "Роли"
+        none_roles: "Отсутствуют" 
       table:
         id: "#"
         title: "Название"

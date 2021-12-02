@@ -7,23 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do |index|
-  Review.create!(
+  Review.first_or_create!
     name: "Обзор на кино ##{index}",
     group: "Кино",
     description: "Описание обзора на кино ##{index}",
     author_rating: rand(10).round(1),
     content: "Текст обзора ##{index}",
     user_id: User.first&.id
-  )
 end
 
 100.times do |index|
-  Review.create!(
+  Review.first_or_create!
     name: "Обзор на книгу ##{index}",
     group: "Книга",
     description: "Описание обзора на книгу ##{index}",
     author_rating: rand(3.0..10.0).round(2),
     content: "Текст обзора ##{index}",
     user_id: User.first&.id
-  )
 end
+
+USER_ROLES = ['ghost', 'user', 'admin']
+
+USER_ROLES.each do |role|
+  Role.find_or_create_by! {name: role}
+end
+
+User.all.each do |user| 
+  user.roles.push Role.find_by name: 'user'
+end
+
+User.first&.roles.push Role.find_by name: 'admin'

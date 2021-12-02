@@ -3,6 +3,7 @@ by:
     nav_item:
       home: "Галоуная"
       reviews:  "Агляды"
+      users: "Карыстальнiкi"
     search_form:
       text_field: "Пошук"
       search_button: "Пошук"
@@ -39,6 +40,8 @@ by:
         email: "Пошта"
         reviews: "Агляды"
         ratings: "Ацэнкi"
+        roles: "Ролi"
+        none_roles: "Адсутнiчаюць" 
     show:
       title: "Профiль карыстальнiка"
       reviews: "Агляды карыстальнiка"

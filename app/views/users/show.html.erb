@@ -23,9 +23,20 @@
       <div class="col text-start"><%= t('users.show.user.ratings') %></div>
       <div class="col text-end"><%= @user.ratings&.size || 0 %></div>
     </div>
+    <br>
+    <div class="row g-0">
+      <div class="col text-start"><%= t('users.show.user.roles') %></div>
+      <div class="col text-end">
+      <% if @user.roles.size > 0 %>
+        <%= @user.roles.inject('') { |result, role| result + ' ' + role.name }%>
+      <% else %>
+        <%= t('users.show.user.none_roles') %>
+      <% end %>
+      </div>
+    </div>
   </div>
   <div class="card-footer">
-    <% if @user == current_user %>
+    <% if current? @user %>
       <%= link_to t('card.edit'), edit_user_registration_path, class: 'btn btn-outline-warning btn-sm'%>
       <div class="float-end"><%= link_to t('card.destroy'), @user, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></div>
     <% end %>
@@ -55,7 +66,7 @@
         <td class="align-middle text-center fw-bold"><%= review.author_rating %></td>
         <td class="align-middle text-center fw-bold"><%= review.average_users_rating %></td>
         <td><%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%></td>
-        <% if current_user == @user %>
+        <% if current? review.user || review.user.admin? %>
           <td><%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%></td>
           <td><%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></td>
         <% end %>

@@ -9,14 +9,12 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :user_roles, dependent: :destroy
+  has_many :roles, through: :user_roles
 
   validates :username, :email, presence: true
 
-  def current?
-    self == current_user
-  end
-
   def admin?
-    # TODO: check admin role
+    roles&.include?(Role.all.find_by name: 'admin')
   end
 end

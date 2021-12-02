@@ -25,6 +25,9 @@
             <li class="nav-item">
               <%= link_to t('navbar.nav_item.reviews'), reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
             </li>
+            <% if user_signed_in? && current_user.admin? %>
+              <%= link_to t('navbar.nav_item.users'), users_path, class: "nav-link" + (current_page?(users_path) ? " active" : "") %>
+            <% end %>
           </ul>
           <form class="d-flex" action="<%= search_path %>" method="<%= :get %>">
             <input class="form-control me-2" type="search" placeholder="<%= t('navbar.search_form.text_field') %>" aria-label="Search" name="<%= :term %>" id="<%= :term %>" value="<%= params[:term] %>">

@@ -3,6 +3,7 @@ en:
     nav_item:
       home: "Home"
       reviews:  "Reviews"
+      users: "Users"
     search_form:
       text_field: "Search"
       search_button: "Search"
@@ -39,6 +40,8 @@ en:
         email: "Email"
         reviews: "Reviews"
         ratings: "Ratings"
+        roles: "Roles"
+        none_roles: "None" 
     show:
       title: "User profile"
       reviews: "User reviews"
