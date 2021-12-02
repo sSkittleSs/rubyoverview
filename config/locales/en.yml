@@ -29,6 +29,7 @@ en:
     destroy: "Destroy"
     update_at: "Last update at"
     make_admin: "Make admin"
+    ago: "ago"
   search:
     search_result: "Search results"
     no_matches: "Your search did not match any reviews."

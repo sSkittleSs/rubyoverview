@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /en|ru|by/ do
+  scope '(:locale)', locale: /en|ru|be/ do
     devise_for :users
     resources :users do
       member do

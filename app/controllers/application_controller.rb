@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
   def creator_permissions?(user)
     helpers.creator_permissions? user
   end
-
+  
   private
 
   def switch_locale(&block)
-    locale = params[:locale] || I18n.default_locale
+    locale = helpers.current_locale
     I18n.with_locale(locale, &block)
   end
 
