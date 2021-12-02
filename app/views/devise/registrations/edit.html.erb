@@ -1,4 +1,4 @@
-<section style="background-color: #eee; margin-left: -20px; margin-right: -20px">
+<section style="background-color: #eee; margin-left: -20px; margin-right: -20px; margin-bottom: -20px;">
   <div class="container">
     <div class="row d-flex justify-content-center align-items-center h-100 pt-5">
       <div class="col-lg-12 col-xl-11">
@@ -7,7 +7,8 @@
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit <%= resource_name.to_s.humanize %></p>
+                <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">Edit user</p>
+                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4"><%= current_user&.email %></p>
 
                 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: 'mx-1 mx-md-4') do |f| %>
                   <%= render "devise/shared/error_messages", resource: resource %>

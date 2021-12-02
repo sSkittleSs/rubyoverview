@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
   before_action :set_review, only: %i[ show edit update destroy ]
 
   # GET /reviews or /reviews.json
@@ -17,6 +18,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    if !@user.current? # TODO: add condition if user is admin
+      redirect_to request&.referrer || root_path
+    end
   end
 
   # POST /reviews or /reviews.json
@@ -36,30 +40,42 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1 or /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review || root_path }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+    if !@user.current? # TODO: add condition if user is admin
+      redirect_to request&.referrer || root_path
+    else
+      respond_to do |format|
+        if @review.update(review_params)
+          format.html { redirect_to @review || root_path }
+          format.json { render :show, status: :ok, location: @review }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @review.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # DELETE /reviews/1 or /reviews/1.json
   def destroy
-    @review.destroy
-    respond_to do |format|
-      format.html { redirect_to request&.referrer || root_path }
-      format.json { head :no_content }
+    if !@user.current? # TODO: add condition if user is admin
+      redirect_to request&.referrer || root_path
+    else
+      @review.destroy
+      respond_to do |format|
+        format.html { redirect_to request&.referrer || root_path }
+        format.json { head :no_content }
+      end
     end
   end
 
   def add_user_rating
-    Review.find(params[:id])&.ratings.push(Rating.new(user_rating: params[:rating], user: current_user))
-    respond_to do |format|
-      format.html { redirect_to request&.referrer || root_path }
+    if !user_signed_in?
+      redirect_to request&.referrer || root_path
+    else
+      Review.find(params[:id])&.ratings.push(Rating.new(user_rating: params[:rating], user: current_user))
+      respond_to do |format|
+        format.html { redirect_to request&.referrer || root_path }
+      end
     end
   end
 

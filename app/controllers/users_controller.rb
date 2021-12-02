@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ index destroy ]
+  before_action :set_user, only: %i[ show destroy ]
 
   # GET /users or /users.json
   def index
+    # TODO: if user is not admin -> redirect to back page or root page
     @users = User.all.order("id DESC").page(params[:page] || 1)
   end
   
@@ -13,42 +15,32 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    redirect_to new_user_registration_path || root_path
   end
 
   # GET /users/1/edit
   def edit
-  end
-
-  # PATCH/PUT /users/1 or /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user || root_path }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to edit_user_registration_path || root_path
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if @user != current_user # TODO: add condition if user is admin
+      redirect_to request&.referrer || root_path
+    else
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:username, :email)
     end

@@ -11,4 +11,12 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :destroy
 
   validates :username, :email, presence: true
+
+  def current?
+    self == current_user
+  end
+
+  def admin?
+    # TODO: check admin role
+  end
 end
