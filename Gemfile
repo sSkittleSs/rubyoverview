@@ -12,6 +12,10 @@ gem 'devise'
 gem 'pg'
 
 gem 'searchkick'
+
+gem 'azure-storage-blob'
+
+gem 'faraday'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use Puma as the app server
