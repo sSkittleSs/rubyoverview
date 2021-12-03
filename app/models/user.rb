@@ -14,11 +14,7 @@ class User < ApplicationRecord
 
   validates :username, :email, presence: true
 
-  def admin?
-    roles&.include? Role.admin
-  end
-
-  def banned?
-    roles&.include? Role.banned
+  def role? role
+    roles&.include? Role.find_role(role)
   end
 end

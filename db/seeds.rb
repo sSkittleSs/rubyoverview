@@ -31,11 +31,11 @@
 USER_ROLES = ['banned', 'user', 'admin']
 
 USER_ROLES.each do |role|
-  Role.create!(name: role)
+  Role.find_or_create_by! name: role
 end
 
 User.all.each do |user| 
-  user.roles.push Role.user
+  user.roles.push Role.role(:user) unless user.role? Role.role(:user)
 end
 
-User.first&.roles.push Role.admin
+User.first&.roles.push Role.role(:admin) unless User.first&.admin?

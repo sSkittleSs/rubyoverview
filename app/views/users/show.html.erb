@@ -66,7 +66,7 @@
         <td class="align-middle text-center fw-bold"><%= review.author_rating %></td>
         <td class="align-middle text-center fw-bold"><%= review.average_users_rating %></td>
         <td><%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%></td>
-        <% if current? review.user || review.user.admin? %>
+        <% if creator_permissions? review.user %>
           <td><%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%></td>
           <td><%= link_to t('card.destroy'), review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></td>
         <% end %>

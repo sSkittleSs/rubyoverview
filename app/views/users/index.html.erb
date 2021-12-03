@@ -30,7 +30,7 @@
         <td class="align-middle text-center fw-bold"><%= user.ratings&.size || 0%></td>
         <td><%= link_to t('card.show'), user, class: 'btn btn-primary btn-sm'%></td>
         <td>
-          <% if !user.admin? %>
+          <% if !user.role?(:admin) %>
             <%= link_to t('card.make_admin'), make_admin_user_path(user), method: :make_admin, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-secondary btn-sm'%>
           <% end %>
         </td>

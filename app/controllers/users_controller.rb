@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def make_admin
-    @user.roles.push Role.admin
+    @user.roles.push Role.find_role(:admin)
     respond_to do |format|
       format.html { redirect_to request&.referrer || root_path }
     end

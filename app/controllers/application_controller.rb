@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_admin_permissions!
-    redirect_to request&.referrer || root_path if !current_user.admin?
+    redirect_to request&.referrer || root_path if !current_user.role?(:admin)
   end
 
   def creator_permissions?(user)
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def banned?
-    user_signed_in? && current_user.banned?
+    user_signed_in? && current_user.role?(:banned)
   end
 
   def switch_locale(&block)
