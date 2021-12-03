@@ -26,7 +26,7 @@ microsoft:
   service: AzureStorage
   storage_account_name: <%= Rails.application.credentials.storage_account_name %>
   storage_access_key: <%= Rails.application.credentials.storage_access_key %>
-  container: <%= Rails.application.credentials.container %>
+  container: <%= Rails.application.credentials.storage_container %>
 
 # mirror:
 #   service: Mirror

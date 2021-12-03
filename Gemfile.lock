@@ -280,7 +280,6 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  faraday
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
