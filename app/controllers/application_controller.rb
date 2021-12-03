@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   around_action :switch_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :redirect_to_ban_page, if: :banned?
 
   def default_url_options
     { locale: I18n.locale }
@@ -17,8 +18,16 @@ class ApplicationController < ActionController::Base
   def creator_permissions?(user)
     helpers.creator_permissions? user
   end
-  
+
   private
+
+  def redirect_to_ban_page
+    redirect_to ban_page_path
+  end
+
+  def banned?
+    user_signed_in? && current_user.banned?
+  end
 
   def switch_locale(&block)
     locale = helpers.current_locale

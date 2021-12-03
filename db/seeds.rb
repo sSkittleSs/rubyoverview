@@ -28,14 +28,14 @@
 #   )
 # end
 
-USER_ROLES = ['ghost', 'user', 'admin']
+USER_ROLES = ['banned', 'user', 'admin']
 
 USER_ROLES.each do |role|
   Role.create!(name: role)
 end
 
 User.all.each do |user| 
-  user.roles.push Role.find_by name: 'user'
+  user.roles.push Role.user
 end
 
-User.first&.roles.push Role.find_by name: 'admin'
+User.first&.roles.push Role.admin

@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def admin?
     roles&.include? Role.admin
   end
+
+  def banned?
+    roles&.include? Role.banned
+  end
 end

@@ -60,4 +60,6 @@ en:
         description: "Description"
         author_rating: "Author's rating"
         users_rating: "Users rating"
-    
+  ban_page:
+    banned: "Your account has been banned!"
+    help: "If you disagree please contact us."
