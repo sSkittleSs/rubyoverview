@@ -29,9 +29,12 @@ en:
     edit:
       title: "Review editing"
       submit: "Update review"
+      show: "Show"
+      back: "Back"
     new:
       title: "Review creating"
       submit: "Create review"
+      back: "Back"
     title: "Reviews"
     new_review: "New review"
   card:

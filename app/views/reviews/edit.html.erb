@@ -3,5 +3,5 @@
 
 <%= render partial: 'form', locals: { review: @review, submit_text: t('reviews.edit.submit'), last_user_id: @last_user_id } %>
 
-<%= link_to 'Show', @review, class: 'btn btn-outline-primary btn-sm' %> |
-<%= link_to 'Back', reviews_path, class: 'btn btn-outline-secondary btn-sm' %>
+<%= link_to t('reviews.edit.show'), @review, class: 'btn btn-outline-primary btn-sm' %> |
+<%= link_to t('reviews.edit.back'), reviews_path, class: 'btn btn-outline-secondary btn-sm' %>

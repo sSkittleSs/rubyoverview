@@ -29,9 +29,12 @@ be:
     edit:
       title: "Рэдагаванне агляду"
       submit: "Абнавiць агляд"
+      show: "Паказаць"
+      back: "Назад"
     new:
       title: "Стварэнне агляду"
       submit: "Стварыць агляд"
+      back: "Назад"
     title: "Агляды"
     new_review: "Новы агляд"
   card:
