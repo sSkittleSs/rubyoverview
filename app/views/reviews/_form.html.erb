@@ -39,13 +39,11 @@
     </div>
   </div>
   
-  <% if current_user&.role?(:admin) %>
-    <div class="d-flex flex-row align-items-center mb-4">
-      <div class="form-outline flex-fill mb-0">
-        <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id') %>
-      </div>
+  <div class="d-flex flex-row align-items-center mb-4" <%= 'hidden' unless current_user&.role?(:admin) %>>
+    <div class="form-outline flex-fill mb-0">
+      <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id') %>
     </div>
-  <% end %>
+  </div>
 
   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
     <%= f.submit submit_text, class: 'btn btn-primary btn-lg' %>
