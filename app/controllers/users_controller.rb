@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[ edit index destroy ]
-  before_action :set_user, only: %i[ show destroy make_admin ]
-  before_action :require_admin_permissions!, only: %i[ index make_admin ]
+  before_action :set_user, only: %i[ show destroy make_admin ban unban ]
+  before_action :require_admin_permissions!, only: %i[ index make_admin ban unban ]
   before_action :require_creator_permissions!, only: %i[ destroy ]
 
   # GET /users or /users.json
@@ -35,6 +35,20 @@ class UsersController < ApplicationController
 
   def make_admin
     @user.roles.push Role.find_role(:admin)
+    respond_to do |format|
+      format.html { redirect_to request&.referrer || root_path }
+    end
+  end
+
+  def ban
+    @user.roles.push Role.find_role(:banned)
+    respond_to do |format|
+      format.html { redirect_to request&.referrer || root_path }
+    end
+  end
+
+  def unban
+    @user.roles.delete Role.find_role(:banned)
     respond_to do |format|
       format.html { redirect_to request&.referrer || root_path }
     end

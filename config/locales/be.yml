@@ -29,6 +29,8 @@ be:
     destroy: "Выдалиць"
     update_at: "Апошняе абнауленне"
     make_admin: "Зрабiць адмiнiстратарам"
+    ban: "Забанiць"
+    unban: "Разбанiць"
   search:
     search_result: "Вынiк запыту"
     no_matches: "Па вашым запыце не знойдзена супадзенняу."

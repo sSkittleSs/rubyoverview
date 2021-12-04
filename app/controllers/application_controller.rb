@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :redirect_to_ban_page, if: :banned?
+  skip_before_action :redirect_to_ban_page, if: :devise_controller?
 
   def default_url_options
     { locale: I18n.locale }

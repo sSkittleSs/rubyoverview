@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     devise_for :users
     resources :users do
       member do
-        post :make_admin, as: :make_admin
+        post :make_admin
+        post :ban
+        post :unban
       end
     end
     resources :reviews do
