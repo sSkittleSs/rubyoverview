@@ -1,48 +1,4 @@
-<div class="card mb-5 mx-auto mt-5" style="width: 18rem;">
-  <div class="row g-0 card-header">
-    <div class="col text-start"><%= link_to t('card.back'), request.referrer || root_path, class: 'btn btn-outline-secondary btn-sm' %></div>
-    <div class="col text-center fw-bold fs-5"><%= t('users.show.title') %></div>
-    <div class="col text-end"></div>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title text-center"><%= @user.username %></h5>
-    <hr>
-    <div class="row g-0">
-      <div class="col text-start"><%= t('users.show.user.id') %></div>
-      <div class="col text-end"><%= @user.id %></div>
-    </div>
-    <div class="row g-0">
-      <div class="col text-start"><%= t('users.show.user.email') %></div>
-      <div class="col text-end"><%= @user.email %></div>
-    </div>
-    <div class="row g-0">
-      <div class="col text-start"><%= t('users.show.user.reviews') %></div>
-      <div class="col text-end"><%= @user.reviews&.size || 0 %></div>
-    </div>
-    <div class="row g-0">
-      <div class="col text-start"><%= t('users.show.user.ratings') %></div>
-      <div class="col text-end"><%= @user.ratings&.size || 0 %></div>
-    </div>
-    <br>
-    <div class="row g-0">
-      <div class="col text-start"><%= t('users.show.user.roles') %></div>
-      <div class="col text-end">
-      <% if @user.roles.size > 0 %>
-        <%= @user.roles.inject('') { |result, role| result + ' ' + role.name }%>
-      <% else %>
-        <%= t('users.show.user.none_roles') %>
-      <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="card-footer">
-    <% if current? @user %>
-      <%= link_to t('card.edit'), edit_user_registration_path, class: 'btn btn-outline-warning btn-sm'%>
-      <div class="float-end"><%= link_to t('card.destroy'), @user, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></div>
-    <% end %>
-    <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(@user.updated_at) %> <%= t('card.ago') %></small></p>
-  </div>
-</div>
+<%= render partial: 'cards/user_profile_card', locals: { user: @user }%>
 <h5 class="text-center"><%= t('users.show.reviews') %></h5>
 <hr><br>
 <table class="table table-striped table-hover">
