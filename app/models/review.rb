@@ -6,7 +6,7 @@ class Review < ApplicationRecord
 
     has_rich_text :content
 
-    validates :name, :group, :user, presence: true
+    validates :name, :group, :user, :author_rating, presence: true
 
     belongs_to :user, optional: true
     has_many :ratings, dependent: :destroy
