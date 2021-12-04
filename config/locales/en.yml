@@ -19,6 +19,19 @@ en:
       top_reviews_creators: "Top from creators"
       top_reviews_users: "Top from users"
   reviews:
+    form:
+      name: "Title"
+      group: "Group"
+      description: "Description"
+      author_rating: "Rating"
+      content: "Main content"
+      user_id: "User id"
+    edit:
+      title: "Review editing"
+      submit: "Update review"
+    new:
+      title: "Review creating"
+      submit: "Create review"
     title: "Reviews"
     new_review: "New review"
   card:

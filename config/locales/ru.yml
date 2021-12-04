@@ -19,6 +19,19 @@ ru:
       top_reviews_creators: "Топ по оценкам авторов"
       top_reviews_users: "Топ обзоров"
   reviews:
+    form:
+      name: "Заголовок"
+      group: "Группа"
+      description: "Описание"
+      author_rating: "Оценка"
+      content: "Основной текст обзора"
+      user_id: "Id пользователя"
+    edit:
+      title: "Редактирование обзора"
+      submit: "Обновить обзор"
+    new:
+      title: "Создание обзора"
+      submit: "Создать обзор"
     title: "Обзоры"
     new_review: "Новый обзор"
   card:

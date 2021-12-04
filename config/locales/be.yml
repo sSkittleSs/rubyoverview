@@ -19,6 +19,19 @@ be:
       top_reviews_creators: "Топ па ацэнкам аутарау"
       top_reviews_users: "Топ аглядау"
   reviews:
+    form:
+      name: "Загаловак"
+      group: "Група"
+      description: "Апiсанне"
+      author_rating: "Ацэнка"
+      content: "Асноуны тэкст агляду"
+      user_id: "Id карыстальнiка"
+    edit:
+      title: "Рэдагаванне агляду"
+      submit: "Абнавiць агляд"
+    new:
+      title: "Стварэнне агляду"
+      submit: "Стварыць агляд"
     title: "Агляды"
     new_review: "Новы агляд"
   card:

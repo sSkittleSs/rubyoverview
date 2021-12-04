@@ -1,8 +1,6 @@
-<%= form_with(model: review) do |form| %>
+<%= form_with(model: review, class: 'mx-1 mx-md-4') do |f| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
       <ul>
         <% review.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,36 +9,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: t('reviews.form.name') %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :group %>
-    <%= form.text_field :group %>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <%= f.text_field :group, autocomplete: "group", class: 'form-control', placeholder: t('reviews.form.group') %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <%= f.text_field :description, class: 'form-control', placeholder: t('reviews.form.description') %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :author_rating %>
-    <%= form.number_field :author_rating, in: 0..10, step: 0.1 %>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <%= f.number_field :author_rating, in: 0..10, step: 0.1, class: 'form-control', placeholder: t('reviews.form.author_rating') %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+      <%= f.rich_text_area :content, class: 'form-control', placeholder: t('reviews.form.content') %>
+    </div>
   </div>
+  
+  <% if current_user&.role?(:admin) %>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <div class="form-outline flex-fill mb-0">
+        <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id') %>
+      </div>
+    </div>
+  <% end %>
 
-  <div class="field" hidden>
-    <%= form.number_field :user_id, value: current_user&.id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+    <%= f.submit submit_text, class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
