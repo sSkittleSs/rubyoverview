@@ -11,7 +11,7 @@
   </div>
   <div class="card-footer">
     <%= link_to t('card.show'), review, class: 'btn btn-primary btn-sm'%>
-    <% if creator_permissions?(review.user) %>
+    <% if creator_permissions?(current_user) %>
       <div class="float-end">
       <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
       <%= link_to t('card.destroy'), review, method: :delete, data: t('card.confirm'), class: 'btn btn-outline-danger btn-sm'%>

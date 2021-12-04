@@ -14,6 +14,6 @@ class Review < ApplicationRecord
     scope :user_rated, -> { where {|el| el.ratings.size > 0} }
 
     def average_users_rating
-        (self.ratings&.inject(0){ |sum, el| sum + el.user_rating }.to_f || 0) / (self.ratings&.size.nonzero? || 1)
+        (self.ratings&.inject(0){ |sum, el| sum + el.user_rating }.to_f || 0) / (self.ratings&.size.nonzero? || 1).round(1)
     end
 end
