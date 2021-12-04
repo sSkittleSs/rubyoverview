@@ -65,3 +65,27 @@ en:
   ban_page:
     banned: "Your account has been banned!"
     help: "If you disagree please contact us."
+  registration:
+    title: "Sign up"
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    characters_minimum: "characters minimum"
+    sign_up: "Sign up"
+  log_in:
+    title: "Log in"
+    email: "Email"
+    password: "Password"
+    remember: "Remember me"
+    sign_in: "Log in"
+  edit_user:
+    title: "Edit user"
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    current_password: "Current password (need for your changes confirmation)"
+    leave_blank: "leave blank if you dont want to change it"
+    characters_minimum: "characters minimum"
+    update: "Update"

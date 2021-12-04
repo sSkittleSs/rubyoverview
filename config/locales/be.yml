@@ -64,3 +64,27 @@ be:
   ban_page:
     banned: "Ваш рахунак быу забанены!"
     help: "Калi вы не згодны, калi ласка, звяжыцеся з намi."
+  registration:
+    title: "Рэгiстрацыя"
+    email: "Пошта"
+    username: "Iмя карыстальнiка"
+    password: "Пароль"
+    password_confirmation: "Пацверджанне пароля"
+    characters_minimum: "сiмвалау мiнiмум"
+    sign_up: "Зарэгiстрыравацца"
+  log_in:
+    title: "Уваход"
+    email: "Пошта"
+    password: "Пароль"
+    remember: "Запомнiць на прыладзе"
+    sign_in: "Увайсцi"
+  edit_user:
+    title: "Рэдагаванне карыстальнiка"
+    email: "Пошта"
+    username: "Iмя карыстальнiка"
+    password: "Пароль"
+    password_confirmation: "Пацверджанне пароля"
+    current_password: "Цяперашнi пароль (патрэбны для пацверджання вашых змен)"
+    leave_blank: "пакiньце поле пустым, калi не хочаце мяняць яго"
+    characters_minimum: "сiмвалау мiнiмум"
+    update: "Змянiць данныя"

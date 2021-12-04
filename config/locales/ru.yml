@@ -65,3 +65,27 @@ ru:
   ban_page:
     banned: "Ваш аккаунт был забанен!"
     help: "Если вы не согласны, пожалуйста, свяжитесь с нами."
+  registration:
+    title: "Регистрация"
+    email: "Почта"
+    username: "Имя пользователя"
+    password: "Пароль"
+    password_confirmation: "Подтверждение пароля"
+    characters_minimum: "символов минимум"
+    sign_up: "Зарегистрироваться"
+  log_in:
+    title: "Вход"
+    email: "Почта"
+    password: "Пароль"
+    remember: "Запомнить на устройстве"
+    sign_in: "Войти"
+  edit_user:
+    title: "Редактирование пользователя"
+    email: "Почта"
+    username: "Имя пользователя"
+    password: "Пароль"
+    password_confirmation: "Подтверждение пароля"
+    current_password: "Текущий пароль (нужен для подтверждения ваших изменений)"
+    leave_blank: "оставьте поле пустым, если не хотите менять его"
+    characters_minimum: "символов минимум"
+    update: "Изменить данные"
