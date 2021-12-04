@@ -35,7 +35,7 @@ USER_ROLES.each do |role|
 end
 
 User.all.each do |user| 
-  user.roles.push Role.role(:user) unless user.role? Role.role(:user)
+  user.roles.push Role.find_role(:user) unless user.role? Role.find_role(:user)
 end
 
-User.first&.roles.push Role.role(:admin) unless User.first&.admin?
+User.first&.roles.push Role.find_role(:admin) unless User.first&.admin?
