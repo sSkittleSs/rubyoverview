@@ -2,7 +2,7 @@
 
 <% if @reviews %>
   <div class="card-columns">
-    <% @reviews.with_highlights.each do |review, highlights| %>
+    <% @reviews&.with_highlights.each do |review, highlights| %>
       <div class="card mb-5">
         <div class="row g-0 card-header">
           <div class="col text-start"><%= highlights[:group]&.html_safe || review.group %></div>

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   
   after_create :assign_user_role
 
-  validates :username, :email, presence: true
+  validates :username, presence: true, uniqueness: true
 
   def role? role
     roles&.include? Role.find_role(role)
