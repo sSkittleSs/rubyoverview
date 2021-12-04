@@ -22,11 +22,11 @@
       <%= form_with(model: review) do |form| %>
       <div class="rating">
         <% (1..5).sort_by{|n| -n}.each do |rating| %>
-        <% if (appreciated?(review)) %>
-          <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
-        <% else %>
-          <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
-        <% end %>
+          <% if (appreciated?(review)) %>
+            <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
+          <% else %>
+            <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
+          <% end %>
         <% end %>
       </div>
       <% end %>
