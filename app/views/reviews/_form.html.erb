@@ -44,10 +44,10 @@
     </div>
   </div>
   
-  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.user_id') %></i>
-  <div class="d-flex flex-row align-items-center mb-4" <%= 'hidden' unless current_user&.role?(:admin) %>>
+  <i class="fas fa-user fa-lg me-3 fa-fw" <%= 'hidden' unless current_user&.role?(:admin) %>><%= t('reviews.form.user_id') %></i>
+  <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
-      <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id') %>
+      <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id'), hidden: !current_user&.role?(:admin) %>
     </div>
   </div>
 

@@ -38,6 +38,8 @@
   <div class="card-footer">
     <% if current? user %>
       <%= link_to t('card.edit'), edit_user_registration_path, class: 'btn btn-outline-warning btn-sm'%>
+    <% end %>
+    <% if creator_permissions?(current_user, user) %>
       <div class="float-end"><%= link_to t('card.destroy'), user, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></div>
     <% end %>
     <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(user.updated_at) %> <%= t('card.ago') %></small></p>

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[ edit index destroy ]
-  before_action :set_user, only: %i[ show destroy make_admin ban unban ]
+  before_action :set_user, only: %i[ show make_admin ban unban ]
   before_action :require_admin_permissions!, only: %i[ index make_admin ban unban ]
-  before_action :require_creator_permissions!, only: %i[ destroy ]
+  around_action :require_creator_permissions!, only: %i[ destroy ]
 
   # GET /users or /users.json
   def index
@@ -57,6 +57,11 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def require_creator_permissions!
+      set_user
+      redirect_to request&.referrer || root_path if !helpers.creator_permissions?(current_user, @user)
     end
 
     def user_params
