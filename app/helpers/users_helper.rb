@@ -1,6 +1,6 @@
 module UsersHelper
-  def creator_permissions?(user)
-    current? user || user&.role?(:admin) || false
+  def creator_permissions?(user, creator = nil)
+    user&.role?(:admin) || current?(creator) || false
   end
   
   def current?(user)

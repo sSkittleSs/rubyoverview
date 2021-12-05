@@ -48,6 +48,8 @@ en:
     ago: "ago"
     ban: "Ban"
     unban: "Unban"
+    author_rating: "Author score"
+    users_rating: "Users score"
   search:
     search_result: "Search results"
     no_matches: "Your search did not match any reviews."

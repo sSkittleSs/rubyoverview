@@ -9,36 +9,42 @@
     </div>
   <% end %>
 
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.name') %></i>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: t('reviews.form.name') %>
     </div>
   </div>
 
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.group') %></i>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <%= f.text_field :group, autocomplete: "group", class: 'form-control', placeholder: t('reviews.form.group') %>
     </div>
   </div>
 
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.description') %></i>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <%= f.text_field :description, class: 'form-control', placeholder: t('reviews.form.description') %>
     </div>
   </div>
 
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.author_rating') %></i>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <%= f.number_field :author_rating, in: 0..10, step: 0.1, class: 'form-control', placeholder: t('reviews.form.author_rating') %>
     </div>
   </div>
 
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.content') %></i>
   <div class="d-flex flex-row align-items-center mb-4">
     <div class="form-outline flex-fill mb-0">
       <%= f.rich_text_area :content, class: 'form-control', placeholder: t('reviews.form.content') %>
     </div>
   </div>
   
+  <i class="fas fa-user fa-lg me-3 fa-fw"><%= t('reviews.form.user_id') %></i>
   <div class="d-flex flex-row align-items-center mb-4" <%= 'hidden' unless current_user&.role?(:admin) %>>
     <div class="form-outline flex-fill mb-0">
       <%= f.number_field :user_id, value: review&.user&.id || current_user&.id, step: 1, class: 'form-control', placeholder: t('reviews.form.user_id') %>
