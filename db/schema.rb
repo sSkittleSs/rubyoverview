@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_221646) do
+ActiveRecord::Schema.define(version: 2021_12_06_130552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,55 @@ ActiveRecord::Schema.define(version: 2021_12_03_221646) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "commontator_comments", force: :cascade do |t|
+    t.bigint "thread_id", null: false
+    t.string "creator_type", null: false
+    t.bigint "creator_id", null: false
+    t.string "editor_type"
+    t.bigint "editor_id"
+    t.text "body", null: false
+    t.datetime "deleted_at"
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["cached_votes_down"], name: "index_commontator_comments_on_cached_votes_down"
+    t.index ["cached_votes_up"], name: "index_commontator_comments_on_cached_votes_up"
+    t.index ["creator_id", "creator_type", "thread_id"], name: "index_commontator_comments_on_c_id_and_c_type_and_t_id"
+    t.index ["editor_type", "editor_id"], name: "index_commontator_comments_on_editor_type_and_editor_id"
+    t.index ["parent_id"], name: "index_commontator_comments_on_parent_id"
+    t.index ["thread_id", "created_at"], name: "index_commontator_comments_on_thread_id_and_created_at"
+  end
+
+  create_table "commontator_subscriptions", force: :cascade do |t|
+    t.bigint "thread_id", null: false
+    t.string "subscriber_type", null: false
+    t.bigint "subscriber_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subscriber_id", "subscriber_type", "thread_id"], name: "index_commontator_subscriptions_on_s_id_and_s_type_and_t_id", unique: true
+    t.index ["thread_id"], name: "index_commontator_subscriptions_on_thread_id"
+  end
+
+  create_table "commontator_threads", force: :cascade do |t|
+    t.string "commontable_type"
+    t.bigint "commontable_id"
+    t.string "closer_type"
+    t.bigint "closer_id"
+    t.datetime "closed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["closer_type", "closer_id"], name: "index_commontator_threads_on_closer_type_and_closer_id"
+    t.index ["commontable_type", "commontable_id"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -106,6 +155,9 @@ ActiveRecord::Schema.define(version: 2021_12_03_221646) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "commontator_comments", "commontator_comments", column: "parent_id", on_update: :restrict, on_delete: :cascade
+  add_foreign_key "commontator_comments", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "commontator_subscriptions", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "ratings", "reviews"
   add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "users"

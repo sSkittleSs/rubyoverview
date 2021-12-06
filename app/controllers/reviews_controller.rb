@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: %i[add_user_rating new create edit update destroy]
   before_action :set_review, only: %i[show destroy update edit]
   before_action :require_creator_permissions!, only: %i[destroy update edit]
+  before_action :set_categories, only: %i[new edit]
 
   # GET /reviews or /reviews.json
   def index
@@ -74,6 +75,10 @@ class ReviewsController < ApplicationController
   def require_creator_permissions!
     set_review
     redirect_to request&.referrer || root_path unless helpers.creator_permissions?(current_user, @review.user)
+  end
+
+  def set_categories
+    @categories = Category.all.inject([]) { |categories, category| categories.push category.name; categories }
   end
 
   def review_params

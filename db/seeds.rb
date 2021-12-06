@@ -39,3 +39,9 @@ User.all.each do |user|
 end
 
 User.first&.roles.push Role.find_role(:admin) unless User.first&.role?(:admin)
+
+CATEGORIES = ['Кино', 'IT', 'Книги', 'Недвижимость', 'СМИ', 'Автомобили']
+
+CATEGORIES.each do |category|
+  Category.find_or_create_by! name: category
+end
