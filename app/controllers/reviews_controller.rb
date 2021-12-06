@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: %i[ add_user_rating new create edit update destroy ]
-  before_action :set_review, only: %i[ show ]
+  before_action :set_review, only: %i[ show destroy update edit ]
   before_action :require_creator_permissions!, only: %i[ destroy update edit ]
 
   # GET /reviews or /reviews.json

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[ edit index destroy ]
-  before_action :set_user, only: %i[ show make_admin ban unban ]
+  before_action :set_user, only: %i[ show make_admin ban unban destroy ]
   before_action :require_admin_permissions!, only: %i[ index make_admin ban unban ]
-  around_action :require_creator_permissions!, only: %i[ destroy ]
+  before_action :require_creator_permissions!, only: %i[ destroy ]
 
   # GET /users or /users.json
   def index
@@ -28,8 +28,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to request&.referrer || root_path, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to request&.referrer || root_path }
     end
   end
 
