@@ -1,19 +1,19 @@
 class Review < ApplicationRecord
-    REVIEWS_PER_PAGE = 30
-    self.per_page = REVIEWS_PER_PAGE
-    
-    searchkick
+  REVIEWS_PER_PAGE = 30
+  self.per_page = REVIEWS_PER_PAGE
 
-    has_rich_text :content
+  searchkick
 
-    validates :name, :group, :user_id, :author_rating, presence: true
+  has_rich_text :content
 
-    belongs_to :user, optional: true
-    has_many :ratings, dependent: :destroy
+  validates :name, :group, :user_id, :author_rating, presence: true
 
-    scope :user_rated, -> { where {|el| el.ratings.size > 0} }
+  belongs_to :user, optional: true
+  has_many :ratings, dependent: :destroy
 
-    def average_users_rating
-        (self.ratings&.inject(0){ |sum, el| sum + el.user_rating }.to_f || 0) / (self.ratings&.size.nonzero? || 1).round(1)
-    end
+  scope :user_rated, -> { where { |el| !el.ratings.size.empty? } }
+
+  def average_users_rating
+    (ratings&.inject(0) { |sum, el| sum + el.user_rating }.to_f || 0) / (ratings&.size.nonzero? || 1).round(1)
+  end
 end

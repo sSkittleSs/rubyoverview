@@ -30,7 +30,7 @@
             <% end %>
           </ul>
           <select class="form-select form-select-sm me-2" onchange="location = this.value;" aria-label=".form-select-sm example" style="width: 8rem;">
-            <% { en: 'English', ru: 'Русский', be: 'Беларуская' }.each do |(locale, humanized_locale)| %>
+            <% ApplicationController::AVAILABLE_LOCALES.each do |(locale, humanized_locale)| %>
               <option <%= 'selected'.html_safe if locale.to_s == current_locale.to_s %> value="<%= url_for(locale: locale) %>">
                 <%= humanized_locale%>
               </option>

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: %i[ add_user_rating new create edit update destroy ]
-  before_action :set_review, only: %i[ show destroy update edit ]
-  before_action :require_creator_permissions!, only: %i[ destroy update edit ]
+  before_action :authenticate_user!, only: %i[add_user_rating new create edit update destroy]
+  before_action :set_review, only: %i[show destroy update edit]
+  before_action :require_creator_permissions!, only: %i[destroy update edit]
 
   # GET /reviews or /reviews.json
   def index
@@ -9,8 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1 or /reviews/1.json
-  def show
-  end
+  def show end
 
   # GET /reviews/new
   def new
@@ -66,18 +65,17 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    def require_creator_permissions!
-      set_review
-      redirect_to request&.referrer || root_path if !helpers.creator_permissions?(current_user, @review.user)
-    end
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:name, :group, :content, :description, :author_rating, :user_id)
-    end
+  def require_creator_permissions!
+    set_review
+    redirect_to request&.referrer || root_path unless helpers.creator_permissions?(current_user, @review.user)
+  end
+
+  def review_params
+    params.require(:review).permit(:name, :group, :content, :description, :author_rating, :user_id)
+  end
 end

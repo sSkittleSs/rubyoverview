@@ -4,12 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :redirect_to_ban_page, if: :banned?
   skip_before_action :redirect_to_ban_page, if: :devise_controller?
 
+  AVAILABLE_LOCALES = { en: 'English', ru: 'Русский', be: 'Беларуская' }
+
   def default_url_options
     { locale: I18n.locale }
   end
   
   def require_admin_permissions!
-    redirect_to request&.referrer || root_path if !current_user.role?(:admin)
+    redirect_to request&.referrer || root_path unless current_user.role?(:admin)
   end
 
   def creator_permissions?(user)
@@ -32,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation, :remember_me])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email password password_confirmation remember_me])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username email password password_confirmation current_password])
   end
 end
