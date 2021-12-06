@@ -1,4 +1,9 @@
 <h1 class="text-center"><%= t('reviews.title') %></h1>
+<% if user_signed_in? %>
+  <div class="d-flex justify-content-end">
+    <%= link_to t('reviews.new_review'), new_review_path, class: 'btn btn-success btn-sm'%>
+  </div>
+<% end %>
 <hr><br>
 <div class="card-columns mx-auto">
   <% @reviews.each do |review| %>
@@ -14,4 +19,3 @@
 </div>
 <br><br><hr><br><br>
 
-<%= link_to t('reviews.new_review'), new_review_path, class: 'btn btn-success'%>

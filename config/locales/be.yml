@@ -73,6 +73,7 @@ be:
         ratings: "Ацэнкi"
         roles: "Ролi"
         none_roles: "Адсутнiчаюць"
+      new_review: "Новы агляд"
       table:
         id: "#"
         title: "Назва"

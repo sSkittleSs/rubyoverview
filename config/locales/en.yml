@@ -74,6 +74,7 @@ en:
         ratings: "Ratings"
         roles: "Roles"
         none_roles: "None"
+      new_review: "New review"
       table:
         id: "#"
         title: "Title"

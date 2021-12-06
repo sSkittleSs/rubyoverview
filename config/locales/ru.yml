@@ -74,6 +74,7 @@ ru:
         ratings: "Оценки"
         roles: "Роли"
         none_roles: "Отсутствуют" 
+      new_review: "Новый обзор"
       table:
         id: "#"
         title: "Название"
