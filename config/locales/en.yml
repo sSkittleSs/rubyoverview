@@ -1,33 +1,110 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  navbar:
+    nav_item:
+      home: "Home"
+      reviews:  "Reviews"
+      users: "Users"
+    search_form:
+      text_field: "Search"
+      search_button: "Search"
+    auth:
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      or: "or"
+  home:
+    index:
+      title: "Home page"
+      last_reviews: "Last reviews"
+      top_reviews_creators: "Top from creators"
+      top_reviews_users: "Top from users"
+  reviews:
+    form:
+      name: "Title"
+      group: "Group"
+      description: "Description"
+      author_rating: "Rating"
+      content: "Main content"
+      user_id: "User id"
+    edit:
+      title: "Review editing"
+      submit: "Update review"
+      show: "Show"
+      back: "Back"
+    new:
+      title: "Review creating"
+      submit: "Create review"
+      back: "Back"
+    title: "Reviews"
+    new_review: "New review"
+  card:
+    confirm: "Are you sure?"
+    back: "Back"
+    show: "Show"
+    edit: "Edit"
+    destroy: "Destroy"
+    update_at: "Last update at"
+    make_admin: "Make admin"
+    ago: "ago"
+    ban: "Ban"
+    unban: "Unban"
+    author_rating: "Author score"
+    users_rating: "Users score"
+  search:
+    search_result: "Search results"
+    no_matches: "Your search did not match any reviews."
+  users:
+    index:
+      title: "Users"
+      table:
+        id: "#"
+        username: "Username"
+        email: "Email"
+        reviews: "Reviews"
+        ratings: "Ratings"
+        roles: "Roles"
+        none_roles: "None"
+    show:
+      title: "User profile"
+      reviews: "User reviews"
+      user:
+        id: "User id"
+        email: "Email"
+        reviews: "Reviews"
+        ratings: "Ratings"
+        roles: "Roles"
+        none_roles: "None"
+      new_review: "New review"
+      table:
+        id: "#"
+        title: "Title"
+        description: "Description"
+        author_rating: "Author's rating"
+        users_rating: "Users rating"
+  ban_page:
+    banned: "Your account has been banned!"
+    help: "If you disagree please contact us."
+  registration:
+    title: "Sign up"
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    characters_minimum: "characters minimum"
+    sign_up: "Sign up"
+  log_in:
+    title: "Log in"
+    email: "Email"
+    password: "Password"
+    remember: "Remember me"
+    sign_in: "Log in"
+  edit_user:
+    title: "Edit user"
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    current_password: "Current password (need for your changes confirmation)"
+    leave_blank: "leave blank if you dont want to change it"
+    characters_minimum: "characters minimum"
+    update: "Update"

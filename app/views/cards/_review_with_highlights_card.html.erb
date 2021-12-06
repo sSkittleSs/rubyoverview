@@ -1,0 +1,36 @@
+<div class="card mb-5">
+  <div class="row g-0 card-header">
+    <div class="col text-start"><%= highlights[:group]&.html_safe || review.group %></div>
+    <div class="col text-end">
+      <%= highlights[:author_rating]&.html_safe || review.author_rating %> | <%= review.average_users_rating %>
+    </div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center"><%= highlights[:name]&.html_safe || review.name %></h5>
+    <hr>
+    <p class="card-text"><%= highlights[:description]&.html_safe || review.description %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Show', review, class: 'btn btn-primary btn-sm'%>
+    <% if creator_permissions?(current_user, review.user) %>
+      <div class="float-end">
+        <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+        <%= link_to 'Destroy', review, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%>
+      </div>
+    <% end %>
+    <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %> <%= t('card.ago') %></small></p>
+    <% if user_signed_in? %>
+      <%= form_with(model: review) do |form| %>
+      <div class="rating">
+        <% (1..5).sort_by{|n| -n}.each do |rating| %>
+          <% if (appreciated?(review)) %>
+            <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
+          <% else %>
+            <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

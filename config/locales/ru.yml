@@ -1,0 +1,137 @@
+ru:
+  navbar:
+    nav_item:
+      home: "Главная"
+      reviews:  "Обзоры"
+      users: "Пользователи"
+    search_form:
+      text_field: "Поиск"
+      search_button: "Поиск"
+    auth:
+      sign_out: "Выйти"
+      sign_in: "Войти"
+      sign_up: "Регистрация"
+      or: "или"
+  home:
+    index:
+      title: "Главная страница"
+      last_reviews: "Последние обзоры"
+      top_reviews_creators: "Топ по оценкам авторов"
+      top_reviews_users: "Топ обзоров"
+  reviews:
+    form:
+      name: "Заголовок"
+      group: "Группа"
+      description: "Описание"
+      author_rating: "Оценка"
+      content: "Основной текст обзора"
+      user_id: "Id пользователя"
+    edit:
+      title: "Редактирование обзора"
+      submit: "Обновить обзор"
+      show: "Показать"
+      back: "Назад"
+    new:
+      title: "Создание обзора"
+      submit: "Создать обзор"
+      back: "Назад"
+    title: "Обзоры"
+    new_review: "Новый обзор"
+  card:
+    confirm: "Вы уверены?"
+    back: "Назад"
+    show: "Показать"
+    edit: "Редактировать"
+    destroy: "Удалить"
+    update_at: "Последнее обновление"
+    make_admin: "Сделать администратором"
+    ago: "назад"
+    ban: "Забанить"
+    unban: "Разбанить"
+    author_rating: "Оценка автора"
+    users_rating: "Оценка пользователей"
+  search:
+    search_result: "Результат запроса"
+    no_matches: "По вашему запросу не найдено совпадений."
+  users:
+    index:
+      title: "Пользователи"
+      table:
+        id: "#"
+        username: "Имя пользователя"
+        email: "Почта"
+        reviews: "Обзоры"
+        ratings: "Оценки"
+        roles: "Роли"
+        none_roles: "Отсутствуют"
+    show:
+      title: "Профиль пользователя"
+      reviews: "Обзоры пользователя"
+      user:
+        id: "Id пользователя"
+        email: "Почта"
+        reviews: "Обзоры"
+        ratings: "Оценки"
+        roles: "Роли"
+        none_roles: "Отсутствуют" 
+      new_review: "Новый обзор"
+      table:
+        id: "#"
+        title: "Название"
+        description: "Описание"
+        author_rating: "Оценка автора"
+        users_rating: "Оценка пользователей"
+  ban_page:
+    banned: "Ваш аккаунт был забанен!"
+    help: "Если вы не согласны, пожалуйста, свяжитесь с нами."
+  registration:
+    title: "Регистрация"
+    email: "Почта"
+    username: "Имя пользователя"
+    password: "Пароль"
+    password_confirmation: "Подтверждение пароля"
+    characters_minimum: "символов минимум"
+    sign_up: "Зарегистрироваться"
+  log_in:
+    title: "Вход"
+    email: "Почта"
+    password: "Пароль"
+    remember: "Запомнить на устройстве"
+    sign_in: "Войти"
+  edit_user:
+    title: "Редактирование пользователя"
+    email: "Почта"
+    username: "Имя пользователя"
+    password: "Пароль"
+    password_confirmation: "Подтверждение пароля"
+    current_password: "Текущий пароль (нужен для подтверждения ваших изменений)"
+    leave_blank: "оставьте поле пустым, если не хотите менять его"
+    characters_minimum: "символов минимум"
+    update: "Изменить данные"
+  will_paginate:
+    next_label: "Следующая →"
+    page_entries_info:
+      multi_page:
+        few: "Отображено %{model} %{from} - %{to} из %{count}"
+        many: "Отображено %{model} %{from} - %{to} из %{count}"
+        one: "Отображено %{model} %{from} - %{to} из %{count}"
+        other: "Отображено %{model} %{from} - %{to} из %{count}"
+      multi_page_html:
+        few: "Отображено %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b>"
+        many: "Отображено %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b>"
+        one: "Отображено %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b>"
+        other: "Отображено %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b>"
+      single_page:
+        few: "Отображено %{count} %{model}"
+        many: "Отображено %{count} %{model}"
+        one: "Отображена %{count} %{model}"
+        other: "Отображено %{count} %{model}"
+        zero: "%{model} не найдены"
+      single_page_html:
+        few: "Отображено <b>%{count}</b> %{model}"
+        many: "Отображено <b>%{count}</b> %{model}"
+        one: "Отображена <b>%{count}</b> %{model}"
+        other: "Отображено <b>%{count}</b> %{model}"
+        zero: "%{model} не найдены"
+    page_gap: "&hellip;"
+    previous_label: "← Предыдущая"

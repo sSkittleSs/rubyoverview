@@ -1,0 +1,35 @@
+<div class="card mb-5 w-100 h-100 mx-auto mt-5">
+  <div class="row g-0 card-header">
+    <div class="col text-start"><%= review.group %></div>
+    <div class="col text-center fw-bold"><%= review.name %></div>
+    <div class="col text-end"><%= t('card.author_rating')%> <%= review.author_rating %> | <%= t('card.users_rating')%> <%= review.average_users_rating %></div>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= review.description %><p>
+    <hr>
+    <p class="card-text"><%= review.content %></p>
+  </div>
+  <div class="card-footer">
+    <% if creator_permissions?(current_user, review.user) %>
+      <div class="float-end">
+        <%= link_to t('card.edit'), edit_review_path(review), class: 'btn btn-outline-warning btn-sm'%>
+        <%= link_to t('card.destroy'), review, method: :delete, data: t('card.confirm'), class: 'btn btn-outline-danger btn-sm'%>
+      </div>
+    <% end %>
+    <p class="card-text"><small class="text-muted"><%= t('card.update_at') %> <%= distance_of_time_in_words_to_now(review.updated_at) %> <%= t('card.ago') %></small></p>
+    <% if user_signed_in? %>
+      <%= form_with(model: review) do |form| %>
+      <div class="rating">
+        <% (1..5).sort_by{|n| -n}.each do |rating| %>
+          <% if (appreciated?(review)) %>
+            <label class="<%= 'filled' if current_rating(review) >= rating%>">★</label>
+          <% else %>
+            <%= link_to '☆', add_user_rating_review_path(review.id, rating), method: :add_user_rating %>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+    <%= link_to t('card.back'), reviews_path, class: 'btn btn-outline-secondary btn-sm align-left' %>
+  </div>
+</div>

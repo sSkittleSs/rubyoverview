@@ -1,0 +1,109 @@
+be:
+  navbar:
+    nav_item:
+      home: "Галоуная"
+      reviews:  "Агляды"
+      users: "Карыстальнiкi"
+    search_form:
+      text_field: "Пошук"
+      search_button: "Пошук"
+    auth:
+      sign_out: "Выйсцi"
+      sign_in: "Увайсцi"
+      sign_up: "Рэгiстрацыя"
+      or: "або"
+  home:
+    index:
+      title: "Галоуная старонка"
+      last_reviews: "Апошнiя агляды"
+      top_reviews_creators: "Топ па ацэнкам аутарау"
+      top_reviews_users: "Топ аглядау"
+  reviews:
+    form:
+      name: "Загаловак"
+      group: "Група"
+      description: "Апiсанне"
+      author_rating: "Ацэнка"
+      content: "Асноуны тэкст агляду"
+      user_id: "Id карыстальнiка"
+    edit:
+      title: "Рэдагаванне агляду"
+      submit: "Абнавiць агляд"
+      show: "Паказаць"
+      back: "Назад"
+    new:
+      title: "Стварэнне агляду"
+      submit: "Стварыць агляд"
+      back: "Назад"
+    title: "Агляды"
+    new_review: "Новы агляд"
+  card:
+    confirm: "Вы упэйнены?"
+    back: "Назад"
+    show: "Паказаць"
+    edit: "Рэдагаваць"
+    destroy: "Выдалиць"
+    update_at: "Апошняе абнауленне"
+    make_admin: "Зрабiць адмiнiстратарам"
+    ban: "Забанiць"
+    unban: "Разбанiць"
+    author_rating: "Ацэнка аутара"
+    users_rating: "Ацэнка карыстальнiкау"
+  search:
+    search_result: "Вынiк запыту"
+    no_matches: "Па вашым запыце не знойдзена супадзенняу."
+  users:
+    index:
+      title: "Карыстальнiкi"
+      table:
+        id: "#"
+        username: "Iмя карыстальнiка"
+        email: "Пошта"
+        reviews: "Агляды"
+        ratings: "Ацэнкi"
+        roles: "Ролi"
+        none_roles: "Адсутнiчаюць" 
+    show:
+      title: "Профiль карыстальнiка"
+      reviews: "Агляды карыстальнiка"
+      user:
+        id: "Id карыстальнiка"
+        email: "Пошта"
+        reviews: "Агляды"
+        ratings: "Ацэнкi"
+        roles: "Ролi"
+        none_roles: "Адсутнiчаюць"
+      new_review: "Новы агляд"
+      table:
+        id: "#"
+        title: "Назва"
+        description: "Апiсанне"
+        author_rating: "Ацэнка аутара"
+        users_rating: "Ацэнка карыстальнiкау"
+  ban_page:
+    banned: "Ваш рахунак быу забанены!"
+    help: "Калi вы не згодны, калi ласка, звяжыцеся з намi."
+  registration:
+    title: "Рэгiстрацыя"
+    email: "Пошта"
+    username: "Iмя карыстальнiка"
+    password: "Пароль"
+    password_confirmation: "Пацверджанне пароля"
+    characters_minimum: "сiмвалау мiнiмум"
+    sign_up: "Зарэгiстрыравацца"
+  log_in:
+    title: "Уваход"
+    email: "Пошта"
+    password: "Пароль"
+    remember: "Запомнiць на прыладзе"
+    sign_in: "Увайсцi"
+  edit_user:
+    title: "Рэдагаванне карыстальнiка"
+    email: "Пошта"
+    username: "Iмя карыстальнiка"
+    password: "Пароль"
+    password_confirmation: "Пацверджанне пароля"
+    current_password: "Цяперашнi пароль (патрэбны для пацверджання вашых змен)"
+    leave_blank: "пакiньце поле пустым, калi не хочаце мяняць яго"
+    characters_minimum: "сiмвалау мiнiмум"
+    update: "Змянiць данныя"

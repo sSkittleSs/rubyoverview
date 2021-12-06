@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope '(:locale)', locale: /en|ru|be/ do
+    devise_for :users
+    resources :users do
+      member do
+        post :make_admin
+        post :ban
+        post :unban
+      end
+    end
+    resources :reviews do
+      member do
+        post '/add_user_rating/:rating(.:format)', to: 'reviews#add_user_rating', as: :add_user_rating
+      end
+    end
+    
+    get 'ban_page', to: 'ban_page#index', as: :ban_page
+    get 'search', to: 'search#search', as: :search
+    root to: 'home#index'
+  end
 end

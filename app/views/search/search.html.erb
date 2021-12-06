@@ -1,0 +1,18 @@
+<h1 class="text-center"><%= t('search.search_result')%></h1>
+
+<% if @reviews %>
+  <div class="card-columns">
+    <% @reviews&.with_highlights.each do |review, highlights| %>
+      <%= render partial: 'cards/review_with_highlights_card', locals: { review: review, highlights: highlights }%>
+    <% end %>
+  </div>
+<% else %>
+  <h5 class="text-center"><%= t('search.no_matches')%></h5>
+<% end %>
+<br>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @reviews %>
+  </div>
+  <%= will_paginate @reviews, :container => false %>
+</div>

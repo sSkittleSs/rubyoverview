@@ -1,0 +1,25 @@
+<h1 class="text-center"><%= t('home.index.title') %></h1>
+<h5><%= t('home.index.last_reviews') %></h5>
+<hr><br>
+<div class="card-columns">
+  <% @last_reviews.each do |review| %>
+    <%= render partial: 'cards/review_card', locals: { review: review }%>
+  <% end %>
+</div>
+<hr><br>
+<h5><%= t('home.index.top_reviews_creators') %></h5>
+<hr><br>
+<div class="card-columns">
+  <% @authors_top_reviews.each do |review| %>
+    <%= render partial: 'cards/review_card', locals: { review: review }%>
+  <% end %>
+</div>
+<hr><br>
+<h5><%= t('home.index.top_reviews_users') %></h5>
+<hr><br>
+<div class="card-columns">
+  <% @users_top_reviews.each do |review| %>
+    <%= render partial: 'cards/review_card', locals: { review: review }%>
+  <% end %>
+</div>
+<hr><br>
