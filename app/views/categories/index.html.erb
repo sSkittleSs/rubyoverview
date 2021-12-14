@@ -1,0 +1,26 @@
+<h1 class="text-center"><%= t('categories.index.title') %></h1>
+<hr><br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= t('categories.index.table.name') %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td class="align-middle text-center fw-bold"><%= category.name %></td>
+        <td><%= link_to t('card.destroy'), category, method: :delete, data: { confirm: t('card.confirm') }, class: 'btn btn-outline-danger btn-sm'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @categories %>
+  </div>
+  <%= will_paginate @categories, :container => false %>
+</div>

@@ -25,8 +25,9 @@
             <li class="nav-item">
               <%= link_to t('navbar.nav_item.reviews'), reviews_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %>
             </li>
-            <% if user_signed_in? && current_user.role?(:admin) %>
-              <%= link_to t('navbar.nav_item.users'), users_path, class: "nav-link" + (current_page?(users_path) ? " active" : "") %>
+            <% if user_signed_in? && current_user&.role?(:admin) %>
+              <li class="nav-item"><%= link_to t('navbar.nav_item.categories'), categories_path, class: "nav-link" + (current_page?(reviews_path) ? " active" : "") %></li>
+              <li class="nav-item"><%= link_to t('navbar.nav_item.users'), users_path, class: "nav-link" + (current_page?(users_path) ? " active" : "") %></li>
             <% end %>
           </ul>
           <select class="form-select form-select-sm me-2" onchange="location = this.value;" aria-label=".form-select-sm example" style="width: 8rem;">

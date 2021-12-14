@@ -4,6 +4,7 @@ en:
       home: "Home"
       reviews:  "Reviews"
       users: "Users"
+      categories: "Categories"
     search_form:
       text_field: "Search"
       search_button: "Search"
@@ -12,6 +13,11 @@ en:
       sign_in: "Sign in"
       sign_up: "Sign up"
       or: "or"
+  categories:
+    index:
+      title: "Categories"
+      table:
+        name: "Category name"
   home:
     index:
       title: "Home page"

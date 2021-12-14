@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         post '/add_user_rating/:rating(.:format)', to: 'reviews#add_user_rating', as: :add_user_rating
       end
     end
-    
+    resources :categories
     get 'ban_page', to: 'ban_page#index', as: :ban_page
     get 'search', to: 'search#search', as: :search
     root to: 'home#index'

@@ -4,6 +4,7 @@ be:
       home: "Галоуная"
       reviews:  "Агляды"
       users: "Карыстальнiкi"
+      categories: "Катэгорыi"
     search_form:
       text_field: "Пошук"
       search_button: "Пошук"
@@ -12,6 +13,11 @@ be:
       sign_in: "Увайсцi"
       sign_up: "Рэгiстрацыя"
       or: "або"
+  categories:
+    index:
+      title: "Катэгорыi"
+      table:
+        name: "Назва катэгорыi"
   home:
     index:
       title: "Галоуная старонка"

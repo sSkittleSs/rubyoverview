@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all.inject([]) { |categories, category| categories.push category.name; categories }
+    @categories = Category.order(:name)
   end
 
   def review_params

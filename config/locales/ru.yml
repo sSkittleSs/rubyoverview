@@ -4,6 +4,7 @@ ru:
       home: "Главная"
       reviews:  "Обзоры"
       users: "Пользователи"
+      categories: "Категории"
     search_form:
       text_field: "Поиск"
       search_button: "Поиск"
@@ -12,6 +13,11 @@ ru:
       sign_in: "Войти"
       sign_up: "Регистрация"
       or: "или"
+  categories:
+    index:
+      title: "Категории"
+      table:
+        name: "Название категории"
   home:
     index:
       title: "Главная страница"
